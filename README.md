@@ -17,6 +17,12 @@ Microservice architecture for Android food tracking app backend with RESTful ser
 
 ## Start the Application
 
+- general start-up with docker-compose: '''docker-compose -f docker-compose.yml up -d --build'''
+- start-up with docker-compose for production: '''docker-compose -f docker-compose.prod.yml up -d --build'''
+- start-up with docker-compose for developmemt: '''docker-compose -f docker-compose.dev.yml up -d --build'''
+- start-up with docker-compose for testing: '''docker-compose -f docker-compose.test.yml up -d --build'''
+- generale shut-down with docker-compose: '''docker-compose -f docker-compose.yml down -v'''
+
 ## CI/CD
 
 ## Architecture

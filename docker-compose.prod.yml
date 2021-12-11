@@ -1,0 +1,44 @@
+version: "3.5"
+
+services:
+  api-gateway:
+    build:
+      context: ./graphql-gateway
+      dockerfile: Dockerfile.dev
+    environment:
+      - PORT=4001
+    volumes:
+      - ./graphql-gateway/src:/app/src
+    ports:
+      - "4001:4001"
+    networks:
+      - default
+    links:
+      - feedme-dashboard-service
+  
+  feedme-dashboard-service:
+    build:
+      context: ./services/feedme-dashboard-service
+      dockerfile: Dockerfile.dev
+    environment:
+      - PORT=4001
+      - DB_HOST=feedme-dashboard-database1:27017, feedme-dashboard-database2:27017
+      - DB_REPLICA=?replicaSet=rs0
+    volumes:
+      - ./services/feedme-dashboard-service/src:/app/src
+    links:
+      - feedme-dashboard-database2
+
+  feedme-dashboard-database1:
+    image: mongo
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
+
+  feedme-dashboard-database2:
+    image: mongo
+    container_name: feedme-dashboard-database2
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
+    #build:
+    #  context: ./services/feedme-dashboard-service/DB_SETUP
+    #  dockerfile: Dockerfile.db
+    links:
+      - feedme-dashboard-database1

@@ -1,0 +1,123 @@
+version: "3.5"
+
+services:
+  api-gateway:
+    build: 
+      context: ./graphql-gateway
+      dockerfile: Dockerfile.dev
+    environment:
+      - PORT=80
+    volumes:
+        - ./graphql-gateway/src:/app/src
+    ports:
+      - "80:80"
+    links:
+      - feedme-dashboard-service
+
+  feedme-dashboard-service:
+    build: 
+      context: ./services/feedme-dashboard-service
+      dockerfile: Dockerfile.dev
+    environment:
+      - PORT=4001
+      - DB_HOST=root:password@pinboard-service:27017
+    volumes:
+        - ./services/feedme-dashboard-service/src:/app/src
+    ports:
+      - "4001:4001"
+    links:
+      - dashboard-database
+  dashboard-database:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  user-service:
+    build: 
+      context: ./services/user-service
+      dockerfile: Dockerfile.dev
+    volumes:
+        - ./services/user-service/src:/app/src
+    ports:
+      - "3000:3000"
+    links:
+      - user-database
+  user-database:
+    image: mongo
+    ports:
+      - "27018:27018"
+
+  inventory-service:
+    build: 
+      context: ./services/inventory-service
+      dockerfile: Dockerfile.dev
+    volumes:
+        - ./services/inventory-service/src:/app/src
+    ports:
+      - "3000:3000"
+    links:
+      - inventory-database
+  inventory-database:
+    image: mongo
+    ports:
+      - "27019:27019"
+
+  recipe-service:
+    build: 
+      context: ./services/recipe-service
+      dockerfile: Dockerfile.dev
+    volumes:
+        - ./services/recipe-service/src:/app/src
+    ports:
+      - "3000:3000"
+    links:
+      - exercise-database
+  exercise-database:
+    image: mongo
+    ports:
+      - "27020:27020"
+  
+  shoppinglist-service:
+    build: 
+      context: ./services/shoppinglist-service
+      dockerfile: Dockerfile.dev
+    volumes:
+        - ./services/shoppinglist-service/src:/app/src
+    ports:
+      - "3000:3000"
+    links:
+      - shoppinglist-database
+  shoppinglist-database:
+    image: mongo
+    ports:
+      - "27021:27021"
+
+  barcode-detection-service:
+    build: 
+      context: ./services/barcode-detection-service
+      dockerfile: Dockerfile.dev
+    volumes:
+        - ./services/barcode-detection-service/src:/app/src
+    ports:
+      - "3000:3000"
+    links:
+      - barcode-detection-database
+  barcode-detection-database:
+    image: mongo
+    ports:
+      - "27022:27022"
+  
+  product-detection-service:
+    build: 
+      context: ./services/product-detection-service
+      dockerfile: Dockerfile.dev
+    volumes:
+        - ./services/product-detection-service/src:/app/src
+    ports:
+      - "3000:3000"
+    links:
+      - product-detection-database
+  product-detection-database:
+    image: mongo
+    ports:
+      - "27023:27023"

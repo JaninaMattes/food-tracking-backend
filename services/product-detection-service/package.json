@@ -1,0 +1,33 @@
+{
+  "name": "pinboard-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/start-service.js",
+  "scripts": {
+    "build": "babel src/start-service.js -d dist",
+    "test": "nodemon --exec babel-node ./node_modules/mocha/bin/mocha",
+    "start": "npm run build && nodemon dist/index.js",
+    "start.dev": "nodemon --exec babel-node ./src/start-service.js"
+  },
+  "author": "Janina Mattes",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "install": "^0.13.0",
+    "mocha": "^8.0.1",
+    "nodemon": "^2.0.4",
+    "npm": "^6.14.5"
+  },
+  "dependencies": {
+    "@apollo/federation": "^0.16.6",
+    "apollo-datasource-mongodb": "^0.2.6",
+    "apollo-server": "^2.14.2",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-plugin-wildcard": "^6.0.0",
+    "lodash.merge": "^4.6.2",
+    "mongoose": "^5.9.18",
+    "mongoose-validator": "^2.1.0"
+  }
+}
