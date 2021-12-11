@@ -1,6 +1,7 @@
 import User from "#root/models/User";
 var jwt = require("jsonwebtoken");
 
+// authenticate user
 const resolvers = {
     Mutation: {
         async login(_, { username, password }, { res }) {

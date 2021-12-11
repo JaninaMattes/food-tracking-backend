@@ -42,11 +42,11 @@ startUpCheck(
                     url: "http://authentication-service:4001",
                     authentication: false,
                 },
-                // All other services
-                { name: 'user', url: 'http://user-service:4001' },
-                { name: 'inventory', url: 'http://inventory-service:4001' },
-                { name: 'shoppinglist', url: 'http://shoppinglist-service:4001' },
-                { name: 'recipe', url: 'http://recipe-service:4001' },
+                // Define all other services
+                // { name: 'user', url: 'http://user-service:4001' },
+                // { name: 'inventory', url: 'http://inventory-service:4001' },
+                // { name: 'shoppinglist', url: 'http://shoppinglist-service:4001' },
+                // { name: 'recipe', url: 'http://recipe-service:4001' },
                 // Define additional services here
             ],
             buildService({ url, authentication }) {

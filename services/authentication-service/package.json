@@ -24,9 +24,9 @@
     "apollo-server": "^2.25.3",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-wildcard": "^6.0.0",
-    "bcrypt": "^5.0.0",
+    "bcrypt": "^5.0.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.18",
+    "mongoose": "^5.13.13",
     "uuid": "^8.2.0"
   }
 }
