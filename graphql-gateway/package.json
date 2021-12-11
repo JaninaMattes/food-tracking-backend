@@ -17,8 +17,10 @@
   "dependencies": {
     "@apollo/gateway": "^0.16.6",
     "apollo-server": "^2.25.3",
+    "apollo-server-core": "^3.5.0",
     "apollo-server-express": "^2.25.3",
     "eslint-html-reporter": "^0.7.4",
+    "express": "^4.17.1",
     "express-jwt": "^6.1.0",
     "graphql": "^15.8.0",
     "node-fetch": "^2.6.6"

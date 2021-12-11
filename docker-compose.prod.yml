@@ -37,8 +37,5 @@ services:
     image: mongo
     container_name: feedme-dashboard-database2
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
-    #build:
-    #  context: ./services/feedme-dashboard-service/DB_SETUP
-    #  dockerfile: Dockerfile.db
     links:
       - feedme-dashboard-database1

@@ -24,7 +24,7 @@ class AuthenticatedDataSource extends RemoteGraphQLDataSource {
         }
     }
 }
-//
+// Use startup check
 startUpCheck(
     ["http://feedme-dashboard-service:4001", "http://authentication-service:4001"],
     function () {
@@ -42,9 +42,11 @@ startUpCheck(
                     url: "http://authentication-service:4001",
                     authentication: false,
                 },
-                //{ name: 'user', url: 'http://user-service:4001' },
-                //{ name: 'exercise', url: 'http://exercise-service:4001' },
-                //{ name: 'communication', url: 'http://communication-service:4001' },
+                // All other services
+                { name: 'user', url: 'http://user-service:4001' },
+                { name: 'inventory', url: 'http://inventory-service:4001' },
+                { name: 'shoppinglist', url: 'http://shoppinglist-service:4001' },
+                { name: 'recipe', url: 'http://recipe-service:4001' },
                 // Define additional services here
             ],
             buildService({ url, authentication }) {
