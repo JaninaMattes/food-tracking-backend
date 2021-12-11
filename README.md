@@ -5,11 +5,15 @@ Microservice architecture for Android food tracking app backend with RESTful ser
 
 ## Repository Aufbau
 
-### /graphql-gateway
-### /services
-#### /services/inventory-service
-#### /services/shoppinglist-service
-#### /services/recepy-service
+### backend/graphql-gateway
+### backend/services
+#### backend/services/authentication-service
+#### backend/services/user-service
+#### backend/services/inventory-service
+#### backend/services/shoppinglist-service
+#### backend/services/recepy-service
+#### backend/services/product-detection-service (not in pipeline)
+#### backend/services/barcode-detection-service (not in pipeline)
 
 ## Start the Application
 
@@ -35,3 +39,7 @@ Microservice architecture for Android food tracking app backend with RESTful ser
 - Minimizes required steps to get app up and running
 - Relies on annotations/XML configs
 - Useful for dealing with long/repetitive operations
+
+### Database System
+
+#### MongoDB + Mongoose

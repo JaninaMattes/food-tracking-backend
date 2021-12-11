@@ -1,0 +1,7 @@
+FROM mongo
+
+COPY ./startReplicaDB.sh /usr/local/bin/startReplicaDB.sh
+
+RUN chmod +x /usr/local/bin/startReplicaDB.sh
+
+CMD ["/usr/local/bin/startReplicaDB.sh"]
